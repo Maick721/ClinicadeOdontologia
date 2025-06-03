@@ -1,4 +1,4 @@
-package Modeles;
+package Model;
 
 public class ServicioController {
 }

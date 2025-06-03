@@ -8,16 +8,82 @@
 
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/estilos.css" />
+
+    <link rel="stylesheet" href="/LoginServlet" />
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
     <script src="bootstrap/js/bootstrap.bundle.js" defer></script>
 
     <!-- Favicon simple -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #4CAF50 !important;
+        }
+
+        .nav-link {
+            color: #4CAF50 !important;
+        }
+
+        .nav-link:hover {
+            color: #388E3C !important;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .btn-primary:hover {
+            background-color: #388E3C;
+            border-color: #388E3C;
+        }
+
+        .carousel-item img {
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .card-title {
+            color: #4CAF50;
+        }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .carousel-caption-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .text-success
+
+    </style>
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100">
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Smile Center</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,8 +105,10 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a href="agendar-cita.jsp" class="btn btn-outline-light me-2">Agendar Cita</a>
-                    <a href="login.jsp" class="btn btn-outline-light">Inicio de Sesión</a>
+                    <div class="d-flex">
+                        <a href="agendar-cita.jsp" class="btn btn-outline-success me-2">Agendar Cita</a>
+                        <a href="login.jsp" class="btn btn-outline-success">Inicio de Sesión</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,8 +116,50 @@
 </header>
 
 <main class="container text-center mt-5 flex-grow-1">
-    <h1 class="display-4 text-primary mb-3">Bienvenido a Smile Center</h1>
+    <h1 class="display-4 text-success mb-3">Bienvenido a Smile Center</h1>
     <p class="lead mb-5">Especialistas en implantes dentales y odontología integral en Quito con 24 años de experiencia y más de 9.000 implantes exitosos.</p>
+
+    <!-- Sección de imágenes y promociones -->
+    <section class="mb-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/3.jpg" class="d-block w-100 carousel-image" alt="Imagen 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="text-success">Promoción de Implantes Dentales</h5>
+                        <p class="carousel-caption-text">Aprovecha nuestras ofertas especiales en implantes dentales.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/2.webp" class="d-block w-100 carousel-image" alt="Imagen 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="text-success">Exámenes Gratuitos</h5>
+                        <p class="carousel-caption-text">Realiza tus exámenes dentales sin costo.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/1.png" class="d-block w-100 carousel-image" alt="Imagen 3">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="text-success">Tratamientos Integrales</h5>
+                        <p class="carousel-caption-text">Descubre nuestros servicios de odontología integral.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
 
     <section class="mb-5">
         <div class="card mx-auto" style="max-width: 500px;">
@@ -99,7 +209,7 @@
     </section>
 </main>
 
-<footer class="bg-primary text-white text-center py-3 mt-auto">
+<footer class="bg-light text-success text-center py-3 mt-auto">
     <small>© 2025 Smile Center - Todos los derechos reservados</small>
 </footer>
 </body>
