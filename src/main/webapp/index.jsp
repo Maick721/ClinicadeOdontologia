@@ -77,7 +77,10 @@
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
-        .text-success
+        .text-success-xl {
+            --bs-text-opacity: 1;
+            color: rgb(0 255 137) !important;
+        }
 
     </style>
 </head>
@@ -131,21 +134,21 @@
                 <div class="carousel-item active">
                     <img src="img/3.jpg" class="d-block w-100 carousel-image" alt="Imagen 1">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-success">Promoción de Implantes Dentales</h5>
+                        <h5 class="text-success-xl">Promoción de Implantes Dentales</h5>
                         <p class="carousel-caption-text">Aprovecha nuestras ofertas especiales en implantes dentales.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="img/2.webp" class="d-block w-100 carousel-image" alt="Imagen 2">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-success">Exámenes Gratuitos</h5>
+                        <h5 class="text-success-xl">Exámenes Gratuitos</h5>
                         <p class="carousel-caption-text">Realiza tus exámenes dentales sin costo.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="img/1.png" class="d-block w-100 carousel-image" alt="Imagen 3">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-success">Tratamientos Integrales</h5>
+                        <h5 class="text-success-xl">Tratamientos Integrales</h5>
                         <p class="carousel-caption-text">Descubre nuestros servicios de odontología integral.</p>
                     </div>
                 </div>

@@ -21,8 +21,8 @@
             border-radius: 5px;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #2b5e02;
+            border-color: #346c01;
             border-radius: 5px;
         }
         .btn-primary:hover {
