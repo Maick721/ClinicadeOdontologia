@@ -1,26 +1,27 @@
 package Servlet;
 
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
+
 public class LoginServlet extends HttpServlet {
+
+    // Usuario y contraseña definidos manualmente
+    private final String USERNAME = "admin";
+    private final String PASSWORD = "123";
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String role = request.getParameter("role");
 
-        // Aquí debes implementar la lógica de autenticación
-        // y verificar si el usuario y contraseña son válidos
-        boolean isValid = false /* Lógica de autenticación */;
+        // Validación simple
+        boolean isValid = username.equals(USERNAME) && password.equals(PASSWORD);
 
         if (!isValid) {
-            // Si las credenciales son inválidas, redirige de vuelta a login.jsp
-            // con un mensaje de error
-            request.setAttribute("error", "Credenciales inválidas");
+            request.setAttribute("error", "Usuario o contraseña incorrectos");
             try {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } catch (ServletException e) {
@@ -29,9 +30,6 @@ public class LoginServlet extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            session.setAttribute("role", role);
-
-            // Redirige al usuario a la página principal o de bienvenida
             response.sendRedirect("index.jsp");
         }
     }

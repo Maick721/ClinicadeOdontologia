@@ -5,37 +5,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Smile Center - Inicio de Sesión</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <%-- Bootstrap para estilos modernos --%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <%-- Estilo personalizado para clínica odontológica --%>
     <style>
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            font-family: 'Segoe UI', sans-serif;
         }
+
         .card {
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: none;
         }
+
         .card-title {
-            font-weight: bold;
+            font-weight: 600;
+            color: #00796b;
         }
-        .form-control, .form-select {
-            border-radius: 5px;
+
+        .form-control {
+            border-radius: 10px;
         }
+
         .btn-primary {
-            background-color: #2b5e02;
-            border-color: #346c01;
-            border-radius: 5px;
+            background-color: #00796b;
+            border-color: #00796b;
+            border-radius: 10px;
         }
+
         .btn-primary:hover {
-            background-color: #c900ff;
-            border-color: #ff00c1;
+            background-color: #004d40;
+            border-color: #004d40;
         }
     </style>
 </head>
 <body>
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card" style="width: 400px;">
+    <div class="card p-4" style="width: 400px;">
         <div class="card-body">
-            <h1 class="card-title text-center mb-4">Inicio de Sesión</h1>
+            <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
+
+            <%-- Formulario de login sin el campo de rol --%>
             <form method="post" action="LoginServlet">
                 <div class="mb-3">
                     <label for="username" class="form-label">Usuario</label>
@@ -45,20 +61,11 @@
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Rol</label>
-                    <select class="form-select" id="role" name="role" required>
-                        <option value="">Selecciona un rol</option>
-                        <option value="admin">Administrador</option>
-                        <option value="recepcionista">Recepcionista</option>
-                        <option value="dentista">Dentista</option>
-                        <option value="paciente">Paciente</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
             </form>
         </div>
     </div>
 </div>
+
 </body>
 </html>
