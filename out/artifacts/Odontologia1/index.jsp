@@ -17,72 +17,158 @@
 
     <!-- Favicon simple -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        :root {
+            --primary-color: #00BCD4;
+            --secondary-color: #006064;
+            --accent-color: #84FFFF;
+            --text-color: #37474F;
+            --light-bg: #E0F7FA;
+            --white: #FFFFFF;
+        }
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--white) !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
-            font-weight: bold;
-            color: #4CAF50 !important;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
         }
 
         .nav-link {
-            color: #4CAF50 !important;
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .nav-link:hover {
-            color: #388E3C !important;
+            color: var(--primary-color) !important;
         }
 
-        .btn-primary {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
+        .btn-modern {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
         }
 
-        .btn-primary:hover {
-            background-color: #388E3C;
-            border-color: #388E3C;
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+            color: var(--white);
         }
 
-        .carousel-item img {
-            max-height: 500px;
-            object-fit: cover;
+        .btn-outline-modern {
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-modern:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
 
         .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card-title {
-            color: #4CAF50;
+            color: var(--secondary-color);
+            font-weight: 600;
         }
 
-        .form-control:focus {
-            border-color: #4CAF50;
-            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        .display-4 {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .text-success-xl {
+            color: var(--primary-color) !important;
         }
 
         .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 1rem;
-            border-radius: 0.5rem;
+            background: linear-gradient(rgba(0, 96, 100, 0.8), rgba(0, 188, 212, 0.8));
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
         }
 
-        .carousel-caption-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .text-success-xl {
-            --bs-text-opacity: 1;
-            color: rgb(0 255 137) !important;
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #E0F7FA;
+            padding: 12px;
+            transition: all 0.3s ease;
         }
 
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 188, 212, 0.25);
+        }
+
+        /* Estilo especial para el botón de Agendar Cita */
+        .btn-agendar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-agendar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+            color: var(--white);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        footer {
+            background-color: var(--light-bg);
+            color: var(--secondary-color);
+        }
     </style>
+
 </head>
 <body class="d-flex flex-column min-vh-100">
 <header>
@@ -108,9 +194,8 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <div class="d-flex">
-                        <a href="agendar-cita.jsp" class="btn btn-outline-success me-2">Agendar Cita</a>
-                        <a href="login.jsp" class="btn btn-outline-success">Inicio de Sesión</a>
+                    <div class="d-flex gap-3">
+                        <a href="login.jsp" class="btn btn-outline-modern">Inicio de Sesión</a>
                     </div>
                 </div>
             </div>
@@ -175,32 +260,13 @@
         </div>
     </section>
 
-    <section class="mb-5">
-        <div class="card mx-auto" style="max-width: 600px;">
-            <div class="card-body">
-                <h2 class="card-title h5 mb-4">Solicita tu cita</h2>
-                <form method="post" action="CitaServlet" novalidate>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fecha" class="form-label">Fecha de Cita</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Solicitar Cita</button>
-                </form>
-            </div>
-        </div>
+    <section class="mb-5 text-center">
+        <a href="agendar-cita.jsp" class="btn btn-agendar">
+            <i class="fas fa-calendar-plus"></i>
+            Agendar Cita
+        </a>
     </section>
+
 
     <section class="mb-5">
         <div class="card mx-auto" style="max-width: 600px;">
