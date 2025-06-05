@@ -1,4 +1,4 @@
-package Controlers;
+package Model;
 
 public class Paciente {
 }
