@@ -1,4 +1,4 @@
-package Model;
+package Controlers;
 
 public class CitaController {
 }
