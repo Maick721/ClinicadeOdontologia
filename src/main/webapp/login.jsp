@@ -6,66 +6,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Smile Center - Inicio de Sesión</title>
 
-    <%-- Bootstrap para estilos modernos --%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <%-- Estilo personalizado para clínica odontológica --%>
     <style>
         body {
-            background: linear-gradient(to right, #e0f7fa, #ffffff);
-            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
         }
 
         .card {
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: none;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
             border: none;
         }
 
-        .card-title {
+        .card-header h3 {
+            margin: 0;
             font-weight: 600;
-            color: #00796b;
+        }
+
+        .card-body {
+            padding: 2rem;
         }
 
         .form-control {
             border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
         }
 
-        .btn-primary {
-            background-color: #00796b;
+        .form-control:focus {
             border-color: #00796b;
-            border-radius: 10px;
+            box-shadow: 0 0 0 0.2rem rgba(0, 121, 107, 0.25);
         }
 
-        .btn-primary:hover {
-            background-color: #004d40;
-            border-color: #004d40;
+        .btn-login {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 121, 107, 0.4);
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+            background-color: #ff5252;
+            color: white;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4" style="width: 400px;">
+<div class="login-container">
+    <div class="card">
+        <div class="card-header">
+            <img src="img/logo.png" alt="Logo" class="logo">
+            <h3>Smile Center</h3>
+        </div>
         <div class="card-body">
-            <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
+            <% if (request.getAttribute("error") != null) { %>
+            <div class="alert alert-danger mb-4" role="alert">
+                <%= request.getAttribute("error") %>
+            </div>
+            <% } %>
 
-            <%-- Formulario de login sin el campo de rol --%>
             <form method="post" action="LoginServlet">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+                <div class="mb-4">
+                    <label for="username" class="form-label">Correo Electrónico</label>
+                    <input type="email"
+                           class="form-control"
+                           id="username"
+                           name="username"
+                           required
+                           placeholder="lesly@gmail.com"
+                           autocomplete="email">
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="password"
+                           required
+                           placeholder="Ingrese su contraseña"
+                           autocomplete="current-password">
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                <button type="submit" class="btn btn-primary btn-login w-100">
+                    Iniciar Sesión
+                </button>
             </form>
         </div>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
