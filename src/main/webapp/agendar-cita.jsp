@@ -20,14 +20,6 @@
                 e.preventDefault();
             }
         }
-        function mostrarExito() {
-            document.getElementById("mensaje-exito").style.display = "block";
-            document.getElementById("mensaje-error").innerHTML = "";
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-        function ocultarExito() {
-            document.getElementById("mensaje-exito").style.display = "none";
-        }
         function validarFormulario() {
             let valido = true;
             let mensaje = "";
@@ -84,14 +76,13 @@
             document.getElementById("mensaje-error").innerHTML = mensaje;
 
             if(valido) {
-                mostrarExito();
-                document.getElementById("agendar-cita-form").reset();
-                setTimeout(ocultarExito, 3500);
-            } else {
-                ocultarExito();
+                // Guardar indicador de éxito en localStorage
+                localStorage.setItem("citaAgendada", "ok");
+                // Redirigir al index
+                window.location.href = "index.jsp";
             }
 
-            return false; // Siempre retorna false para evitar recargar la página y mostrar el mensaje
+            return false; // Nunca enviar el formulario (controlado por JS)
         }
         window.onload = function() {
             document.getElementById("cedula").addEventListener("keypress", soloNumeros);
@@ -105,9 +96,6 @@
         <div class="col-md-7 col-lg-6">
             <div class="card shadow">
                 <div class="card-body">
-                    <div id="mensaje-exito" class="alert alert-success text-center fw-bold" style="display:none;">
-                        Tu cita se ha agendado con éxito.
-                    </div>
                     <h2 class="card-title text-center mb-4 text-primary fw-bold">Agendar Cita</h2>
                     <form id="agendar-cita-form" action="#" method="post" autocomplete="off" onsubmit="return validarFormulario();">
                         <div class="mb-3">

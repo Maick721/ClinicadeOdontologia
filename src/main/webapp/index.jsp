@@ -27,6 +27,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script>
+        window.onload = function() {
+            // Mostrar mensaje de éxito si existe la bandera en localStorage
+            if(localStorage.getItem("citaAgendada") === "ok") {
+                var modal = new bootstrap.Modal(document.getElementById('modalCitaAgendada'));
+                modal.show();
+                localStorage.removeItem("citaAgendada");
+            }
+        }
+    </script>
+
     <style>
         :root {
             --primary-color: #00a6c7;
@@ -292,6 +303,24 @@
         </div>
     </nav>
 </header>
+
+<!-- Modal de éxito para cita agendada -->
+<div class="modal fade" id="modalCitaAgendada" tabindex="-1" aria-labelledby="modalCitaAgendadaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-success">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="modalCitaAgendadaLabel"><i class="fas fa-check-circle"></i> Cita Agendada</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="fs-5 mb-0">¡Tu cita se ha agendado con éxito!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <main class="container py-5">
     <h1 class="text-center display-4 mb-4">Bienvenido a Smile Center</h1>
