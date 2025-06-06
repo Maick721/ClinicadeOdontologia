@@ -20,7 +20,14 @@
                 e.preventDefault();
             }
         }
-        // Validación general del formulario
+        function mostrarExito() {
+            document.getElementById("mensaje-exito").style.display = "block";
+            document.getElementById("mensaje-error").innerHTML = "";
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        function ocultarExito() {
+            document.getElementById("mensaje-exito").style.display = "none";
+        }
         function validarFormulario() {
             let valido = true;
             let mensaje = "";
@@ -75,9 +82,17 @@
             }
 
             document.getElementById("mensaje-error").innerHTML = mensaje;
-            return valido;
+
+            if(valido) {
+                mostrarExito();
+                document.getElementById("agendar-cita-form").reset();
+                setTimeout(ocultarExito, 3500);
+            } else {
+                ocultarExito();
+            }
+
+            return false; // Siempre retorna false para evitar recargar la página y mostrar el mensaje
         }
-        // Añadir el listener después de cargar el DOM
         window.onload = function() {
             document.getElementById("cedula").addEventListener("keypress", soloNumeros);
             document.getElementById("telefono").addEventListener("keypress", soloNumeros);
@@ -90,8 +105,11 @@
         <div class="col-md-7 col-lg-6">
             <div class="card shadow">
                 <div class="card-body">
+                    <div id="mensaje-exito" class="alert alert-success text-center fw-bold" style="display:none;">
+                        Tu cita se ha agendado con éxito.
+                    </div>
                     <h2 class="card-title text-center mb-4 text-primary fw-bold">Agendar Cita</h2>
-                    <form action="${pageContext.request.contextPath}/citas/agendar" method="post" autocomplete="off" onsubmit="return validarFormulario();">
+                    <form id="agendar-cita-form" action="#" method="post" autocomplete="off" onsubmit="return validarFormulario();">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre del paciente</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
