@@ -21,15 +21,11 @@
 
         .login-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             padding: 20px;
-        }
-
-        .card {
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: none;
-            overflow: hidden;
+            background-color: #ffffff;
         }
 
         .card-header {
@@ -37,7 +33,7 @@
             color: white;
             text-align: center;
             padding: 2rem;
-            border: none;
+            border-radius: 15px 15px 0 0;
         }
 
         .card-header h3 {
@@ -91,53 +87,61 @@
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
 <div class="login-container">
-    <div class="card">
-        <div class="card-header">
-            <img src="img/logo.png" alt="Logo" class="logo">
-            <h3>Smile Center</h3>
+    <div class="card-header">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <h3>Smile Center</h3>
+    </div>
+    <div class="card-body">
+        <% if (request.getAttribute("error") != null) { %>
+        <div class="alert alert-danger mb-4" role="alert">
+            <%= request.getAttribute("error") %>
         </div>
-        <div class="card-body">
-            <% if (request.getAttribute("error") != null) { %>
-            <div class="alert alert-danger mb-4" role="alert">
-                <%= request.getAttribute("error") %>
-            </div>
-            <% } %>
+        <% } %>
 
-            <form method="post" action="LoginServlet">
-                <div class="mb-4">
-                    <label for="username" class="form-label">Correo Electrónico</label>
-                    <input type="email"
-                           class="form-control"
-                           id="username"
-                           name="username"
-                           required
-                           placeholder="lesly@gmail.com"
-                           autocomplete="email">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password"
-                           class="form-control"
-                           id="password"
-                           name="password"
-                           required
-                           placeholder="Ingrese su contraseña"
-                           autocomplete="current-password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-login w-100">
-                    Iniciar Sesión
-                </button>
-            </form>
-        </div>
+        <form method="post" action="LoginServlet">
+            <div class="mb-4">
+                <label for="username" class="form-label">Correo Electrónico</label>
+                <input type="email"
+                       class="form-control"
+                       id="username"
+                       name="username"
+                       required
+                       placeholder="dentistas@gmail.com"
+                       autocomplete="email">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       name="password"
+                       required
+                       placeholder="Ingrese su contraseña"
+                       autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-login w-100">
+                Iniciar Sesión
+            </button>
+        </form>
+    </div>
+    <div class="footer-text">
+        <p>&copy; 2025 Smile Center. Todos los derechos reservados.</p>
     </div>
 </div>
 

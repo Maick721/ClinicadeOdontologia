@@ -299,6 +299,9 @@
                 <div class="d-flex gap-3">
                     <a href="login.jsp" class="btn btn-outline-modern">Inicio de Sesión</a>
                 </div>
+                <div class="d-flex gap-3">
+                    <a href="historiaclinica.jsp" class="btn btn-outline-modern">Historia</a>
+                </div>
             </div>
         </div>
     </nav>
