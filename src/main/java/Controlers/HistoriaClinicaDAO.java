@@ -1,7 +1,6 @@
 package Controlers;
 
 import Model.HistoriaClinica;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
