@@ -277,7 +277,7 @@
                     <a class="nav-link" href="#servicios">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#promociones">Promociones</a>
+                    <a class="nav-link" href="historia_clinica.jsp">Promociones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="agendar-cita.jsp">Contáctanos</a>
