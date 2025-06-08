@@ -29,16 +29,23 @@
 
     <script>
         window.onload = function() {
-            // Mostrar mensaje de éxito si existe la bandera en localStorage
+            // Mostrar mensaje de éxito si existe la bandera en localStorage (para el flujo JS antiguo)
             if(localStorage.getItem("citaAgendada") === "ok") {
                 var modal = new bootstrap.Modal(document.getElementById('modalCitaAgendada'));
                 modal.show();
                 localStorage.removeItem("citaAgendada");
             }
+            // Mostrar mensaje de éxito si viene el parámetro exito=1 por redirección del servlet
+            <%-- Usando JSP para pasar al JS si hay el parámetro --%>
+            <% if ("1".equals(request.getParameter("exito"))) { %>
+            var modal = new bootstrap.Modal(document.getElementById('modalCitaAgendada'));
+            modal.show();
+            <% } %>
         }
     </script>
 
     <style>
+        /* ... (todo tu CSS igual) ... */
         :root {
             --primary-color: #00a6c7;
             --secondary-color: #005f73;
@@ -50,234 +57,36 @@
             --warning: #fbbf24;
             --error: #ef4444;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--white);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            padding: 1rem 0;
-        }
-
-        .navbar-brand {
-            font-size: 1.75rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
-            color: var(--text-color) !important;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Botones */
-        .btn-modern {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 166, 199, 0.2);
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 166, 199, 0.3);
-            color: var(--white);
-        }
-
-        .btn-outline-modern {
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            background-color: transparent;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-modern:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Carrusel */
-        .carousel {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-
-        .carousel-inner {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-        }
-
-        .carousel-item {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .carousel-caption {
-            background: linear-gradient(rgba(0, 166, 199, 0.85), rgba(0, 95, 115, 0.85));
-            border-radius: 15px;
-            padding: 1.5rem;
-            backdrop-filter: blur(8px);
-            max-width: 80%;
-            margin: 0 auto;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Cards */
-        .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            color: var(--secondary-color);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        /* Botón agendar */
-        .btn-agendar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 166, 199, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .btn-agendar:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 166, 199, 0.4);
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: var(--white);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--light-bg);
-            color: var(--secondary-color);
-            padding: 1.5rem 0;
-            margin-top: auto;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        /* Media Queries */
-        @media (max-width: 1200px) {
-            .carousel {
-                max-width: 100%;
-                border-radius: 0;
-            }
-        }
-
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--white); min-height: 100vh; display: flex; flex-direction: column; }
+        .navbar { background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08); padding: 1rem 0; }
+        .navbar-brand { font-size: 1.75rem; font-weight: 700; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { position: relative; font-weight: 500; padding: 0.5rem 1rem; margin: 0 0.25rem; color: var(--text-color) !important; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--primary-color); transition: all 0.3s ease; transform: translateX(-50%); }
+        .nav-link:hover::after { width: 100%; }
+        .btn-modern { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 199, 0.2); }
+        .btn-modern:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 166, 199, 0.3); color: var(--white); }
+        .btn-outline-modern { color: var(--primary-color); border: 2px solid var(--primary-color); background-color: transparent; padding: 0.7rem 1.8rem; border-radius: 50px; font-weight: 500; transition: all 0.3s ease; }
+        .btn-outline-modern:hover { background-color: var(--primary-color); color: var(--white); }
+        .carousel { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); margin: 0 auto; max-width: 1200px; }
+        .carousel-inner { position: relative; width: 100%; aspect-ratio: 16/9; }
+        .carousel-item { position: relative; width: 100%; height: 100%; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .carousel-caption { background: linear-gradient(rgba(0, 166, 199, 0.85), rgba(0, 95, 115, 0.85)); border-radius: 15px; padding: 1.5rem; backdrop-filter: blur(8px); max-width: 80%; margin: 0 auto; bottom: 2rem; left: 50%; transform: translateX(-50%); }
+        .card { border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; overflow: hidden; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        .card-title { color: var(--secondary-color); font-weight: 700; margin-bottom: 1rem; }
+        .card-img-top { width: 100%; height: 250px; object-fit: cover; }
+        .btn-agendar { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; border: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 199, 0.3); display: inline-flex; align-items: center; gap: 0.75rem; }
+        .btn-agendar:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 166, 199, 0.4); background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); color: var(--white); }
+        footer { background-color: var(--light-bg); color: var(--secondary-color); padding: 1.5rem 0; margin-top: auto; border-top: 1px solid rgba(0, 0, 0, 0.05); }
+        @media (max-width: 1200px) { .carousel { max-width: 100%; border-radius: 0; } }
         @media (max-width: 768px) {
-            .carousel-inner {
-                aspect-ratio: 4/3;
-            }
-
-            .carousel-caption {
-                position: relative;
-                background: var(--light-bg);
-                color: var(--text-color);
-                border-radius: 0 0 20px 20px;
-                max-width: 100%;
-                bottom: 0;
-                transform: none;
-                left: 0;
-            }
-
-            .carousel-caption h5 {
-                font-size: 1.1rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .carousel-caption p {
-                font-size: 0.9rem;
-                margin-bottom: 0;
-            }
-
-            .btn-agendar {
-                width: 100%;
-                justify-content: center;
-            }
+            .carousel-inner { aspect-ratio: 4/3; }
+            .carousel-caption { position: relative; background: var(--light-bg); color: var(--text-color); border-radius: 0 0 20px 20px; max-width: 100%; bottom: 0; transform: none; left: 0; }
+            .carousel-caption h5 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            .carousel-caption p { font-size: 0.9rem; margin-bottom: 0; }
+            .btn-agendar { width: 100%; justify-content: center; }
         }
     </style>
 </head>
